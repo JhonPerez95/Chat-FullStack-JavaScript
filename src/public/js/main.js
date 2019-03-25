@@ -48,7 +48,8 @@ $(function () {
        }
        $userNames.html(html);
     });
-    socket.on('new message',function(data) { // Recibe datos del servidor y los muestra
-        $chat.append(data + '<br/>');
+    socket.on('new message',data =>{ // Recibe datos del servidor y los muestra
+        $chat.append('<strong>'+data.userName+':</strong>'+ data.msg +'<br/>');
+        
     } );
 });

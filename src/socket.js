@@ -3,10 +3,11 @@ module.exports = function (io) {
 
     io.on('connection',  socket => {
         console.log('un nuevo user conectado');
-            //io = Es todos los clientes conectados
-            // Socket = a uno solo.
         socket.on('send message', function(data) { // Recibe los datos
-            io.sockets.emit('new message', data); // devuelve a tods los clientes conectados
+            io.sockets.emit('new message',{ // devuelve a tods los clientes conectados
+                msg: data,
+                userName: socket.userName
+            } ); 
          });
 
         socket.on('new user', (data, cb)=>{
@@ -17,8 +18,17 @@ module.exports = function (io) {
                 cb(true);
                 socket.userName = data;
                 userNames.push(socket.userName);
-                io.sockets.emit('userNames', userNames);
+                updateUserName();
             }
         } );
+        socket.on('disconnect', data=>{ // Eliminando el usuario que se deconecte
+            if (!socket.userName) return;
+            userNames.splice(userNames.indexOf(socket.userName), 1); 
+            updateUserName();
+        });
+
+        function updateUserName() {
+            io.sockets.emit('userNames', userNames);
+        }
     });
 };
