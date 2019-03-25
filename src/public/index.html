@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat FullStack JavaScript</title>
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+    <!--CSS PROPIOS-->
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <h1>Codigo va aqui</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a href="/" class="navbar-brand mx-auto">Chat FullStack JavaScript</a>
+    </nav>
+    <div class="container">
+        <div class="col-md6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Chatiamos?</h4>
+                </div >
+                <div id="idChat" class="cardbody">
+                </div>
+                <form class="card-footer" id="message-form">
+                    <div class="input-group">
+                        <input type="text" name="" id="message" class="form-control">
+                        <div class="input-group-append"> 
+                            <input type="submit" value="Enviar" class="btn btn-dark bg-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.js"></script>
 </body>
