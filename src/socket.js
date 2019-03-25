@@ -1,5 +1,5 @@
 module.exports = function (io) {
-    let userNames = [];
+    let userNames = ['Luis', 'Carlos', 'Juan'];
 
     io.on('connection',  socket => {
         console.log('un nuevo user conectado');
@@ -10,12 +10,14 @@ module.exports = function (io) {
          });
 
         socket.on('new user', (data, cb)=>{
+            //console.log(data);
             if (userNames.indexOf(data) != -1) { // validamos que el usuario ya exista
                 cb(false);
             }else{
                 cb(true);
                 socket.userName = data;
                 userNames.push(socket.userName);
+                io.sockets.emit('userNames', userNames);
             }
         } );
     });

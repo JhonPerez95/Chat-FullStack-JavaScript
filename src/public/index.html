@@ -23,7 +23,7 @@
         <p id="userError"></p>
         <div class="card-body">
             <form id="userForm">
-                <input type="text" name="nameUser" id="nameUser" class="form-control">
+                <input type="text" name="userName" id="userName" class="form-control">
                 <button type="submit" class="btn btn-dark bg-primary btn-block mt-2">
                     <i class="fas fa-user-tie"> Ingresar </i>
                 </button>
@@ -45,7 +45,7 @@
                             <input type="text" name="" id="message" class="form-control">
                             <div class="input-group-append"> 
                                 <button type="submit" class="btn btn-dark bg-primary">
-                                    <i class="fas fa-paper-plane">Enviar</i>
+                                    <i class="fas fa-paper-plane"> Enviar</i>
                                 </button>                                        
                             </div>
                         </div>
@@ -58,13 +58,12 @@
                     <h3>Usuarios: </h3>
                 </div>
                 <div class="card-body">
-                    <div id="userName"></div>
+                    <div id="userNames"></div>
                 </div>
             </div>
         </div>
         
     </div>
->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.js"></script>

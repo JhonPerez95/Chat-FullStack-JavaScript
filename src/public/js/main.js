@@ -26,7 +26,7 @@ $(function () {
         // Capturando Eventos
         $userForm.submit(function (e) {
             e.preventDefault(); 
-            socket.emit('new user', $userName.val(), function (data) {
+            socket.emit('new user', $userName.val(), data =>{
                 if (data) {
                     $('#userContainer').hide(); // Oculta el formulario de Usuario
                     $('#containerApp').show(); // Muestra el Chat
@@ -35,14 +35,19 @@ $(function () {
                         <div class="alert alert-danger" role="alert">
                             Usuario ya existente !
                         </div>
-                    `);               
+                    `);         
                 }
-                $userName.val('');
             });
+            $userName.val('');      
         });
 
-
-
+    socket.on('userNames', data=>{ // Listando usuarios 
+        let html = '';
+       for (let i = 0; i < data.length; i++) {
+          html += ` <p> <i class="fas fa-user-ninja"> </i> ${data[i]}</p> `
+       }
+       $userNames.html(html);
+    });
     socket.on('new message',function(data) { // Recibe datos del servidor y los muestra
         $chat.append(data + '<br/>');
     } );
