@@ -16,7 +16,6 @@ require('./socket')(io);
 mongoose.connect('mongodb://localhost/chat-database')
 .then(db=>{console.log('Base de datos conectada')
 .catch(error=>{console.log(error)});
-
 });
 
 // settings the server 
