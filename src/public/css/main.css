@@ -7,3 +7,12 @@ body{
 #containerApp{
     display: none;
 }
+
+.error{
+    color: red;
+}
+
+.wisper{
+    color: slateblue;
+    font-style: italic;
+}

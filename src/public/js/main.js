@@ -55,6 +55,23 @@ $(function () {
     });
 
     socket.on('new message',data =>{                // Recibe datos del servidor y los muestra
-        $chat.append('<strong>'+data.userName+': </strong>'+ data.msg +'<br/>');
+        mostrarMsg(data);
     });
+
+    socket.on('wisper', data=>{
+        $chat.append(`<p class="wisper"><b>${data.userName}: </b>${data.msg}</p> `);
+    } );
+
+    socket.on('load old msg', data=>{
+        for (let i = 0; i < data.length; i++) {
+            mostrarMsg(data[i]);
+            
+        }
+    });
+
+    function mostrarMsg(data) {
+        $chat.append('<strong>'+data.userName+': </strong>'+ data.msg +'<br/>');
+
+    }
+
 });
