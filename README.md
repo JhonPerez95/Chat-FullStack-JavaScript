@@ -6,6 +6,7 @@ Tecnologias utilizadas:
 - HTML5,CSS 
 - Bootstrap
 - Nodejs
+- Socket
 - Express
 - WebSockets
 - Mongodb
